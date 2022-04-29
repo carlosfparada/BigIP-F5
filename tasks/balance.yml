@@ -1,11 +1,6 @@
 ---
 
-- name: Create F5 Nodes (OPTIONAL)
-  f5networks.f5_modules.bigip_node:
-    provider: {{ f5_provider }}
-    host: "{{hostvars[item].ansible_host}}"
-    name: "{{hostvars[item].inventory_hostname}}"
-  loop: "{{ groups['webserver'] }}"
+
 
 - name: Create F5 Pools
   bigip_pool: 
