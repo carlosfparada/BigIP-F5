@@ -1,6 +1,13 @@
 ---
 
-- name: www_pool for servers
+- name: Create F5 Nodes (OPTIONAL)
+  f5networks.f5_modules.bigip_node:
+    provider: {{ f5_provider }}
+    host: "{{hostvars[item].ansible_host}}"
+    name: "{{hostvars[item].inventory_hostname}}"
+  loop: "{{ groups['webserver'] }}"
+
+- name: Create F5 Pools
   bigip_pool: 
     provider: "{{ f5_provider }}"
     name: www_pool
@@ -10,7 +17,7 @@
     state: present
   notify: save config
 
-- name: add pool members
+- name: Add Pool Members
   bigip_pool_member:
     provider: "{{ f5_provider }}"
     port: "{{ hostvars[item].port }}"
@@ -20,7 +27,7 @@
   loop: "{{ groups['webserver'] }}"
   notify: save config
 
-- name: add virtual server
+- name: Add Virtual Server
   bigip_virtual_server:
     provider: "{{ f5_provider }}"
     name: "vip"
@@ -33,7 +40,7 @@
   notify: save config
   register: vservercache
 
-- name: delay after virtual server changed
+- name: Delay after virtual server changed
   wait_for:
     timeout: 5
   when: vservercache.changed
