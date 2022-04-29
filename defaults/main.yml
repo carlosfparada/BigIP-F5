@@ -2,8 +2,8 @@
 # defaults file for f5-bigip
 
 f5_license: 1234-1234-1234-1234
-f5_provider_server_port: 8443
-f5_provider_password: changeme
+f5_provider_server_port: 443
+f5_provider_password: Rfc1918!
 # present / absent
 f5_license_state: present
 
