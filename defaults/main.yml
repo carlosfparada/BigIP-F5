@@ -1,6 +1,33 @@
 ---
 # defaults file for f5-bigip
 
-f5_provider: {}
-f5_licenses: []
+f5_license: 1234-1234-1234-1234
+f5_provider_server_port: 8443
+f5_provider_password: changeme
+# present / absent
+f5_license_state: present
 
+f5_provider:
+  server: "{{ ansible_host }}"
+  user: admin
+  validate_certs: no
+  password: "{{ f5_provider_password }}"
+  server_port: "{{ f5_provider_server_port }}"
+
+f5_device_info_subset:
+  - system-info
+
+f5_reverse_dest: tower
+
+f5_web_dir: /tmp/
+f5_pools: [www_pool1, www_pool2]
+
+input_member_state: enabled
+input_webservers: []
+
+f5_tower_username: admin
+f5_tower_password: changme
+f5_tower_host: https://127.0.0.1
+f5_tower_inventory: reverse
+
+pm: []
