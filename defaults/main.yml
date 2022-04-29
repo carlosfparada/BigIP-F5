@@ -1,6 +1,6 @@
 ---
 # defaults file for f5-bigip
-f5_licenses: [1234-1234-1234-1234]
+f5_licenses: []
 
 f5_license: 1234-1234-1234-1234
 f5_provider_server_port: 443
