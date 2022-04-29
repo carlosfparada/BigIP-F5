@@ -13,12 +13,11 @@
 - name: add pool members
   bigip_pool_member:
     provider: "{{ f5_provider }}"
-    #port: "{{ hostvars[item].port }}"
-    port: 80
-    name: "{{hostvars[item].inventory_hostname}}"
-    host: "{{hostvars[item].ansible_host}}"
+    port: "{{ hostvars[item].port }}"
+    name: "{{ hostvars[item].inventory_hostname }}"
+    host: "{{ hostvars[item].ansible_host }}"
     pool: www_pool
-  loop: "{{ groups['linux'] }}"
+  loop: "{{ groups['webserver'] }}"
   notify: save config
 
 - name: add virtual server
