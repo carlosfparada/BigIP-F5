@@ -17,7 +17,7 @@
     name: "{{hostvars[item].inventory_hostname}}"
     host: "{{hostvars[item].ansible_host}}"
     pool: www_pool
-  loop: "{{ groups['webservers'] }}"
+  loop: "{{ groups['linux'] }}"
   notify: save config
 
 - name: add virtual server
