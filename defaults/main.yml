@@ -23,9 +23,9 @@ f5_reverse_dest: tower
 f5_web_dir: /tmp/
 f5_pools: [www_pool1, www_pool2]
 
-input_member_state: enabled
 input_webservers: [webserver-1]
 f5_pool: www_pool1
+input_member_state: disabled
 
 f5_tower_username: admin
 f5_tower_password: changme
