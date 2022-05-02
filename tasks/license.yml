@@ -1,20 +1,11 @@
 ---
 
-- name: Revoke license on big-ip
-  bigip_device_license: 
-    provider: "{{ f5_provider }}"
-    accept_eula: "yes"
-    state: revoked
-    license_key: "{{ item }}"
-  loop: "{{ f5_licenses }}"
-  notify: save config
-  ignore_errors: yes
-
 - name: Install license on big-ip
   bigip_device_license: 
     provider: "{{ f5_provider }}"
-    accept_eula: "yes"
+    accept_eula: yes
     state: present
     license_key: "{{ item }}"
+    force: yes
   loop: "{{ f5_licenses }}"
   notify: save config
