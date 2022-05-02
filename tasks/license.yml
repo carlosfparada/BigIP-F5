@@ -6,6 +6,5 @@
     accept_eula: yes
     state: present
     license_key: "{{ item }}"
-    force: yes
   loop: "{{ f5_licenses }}"
   notify: save config
