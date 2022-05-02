@@ -44,3 +44,7 @@
     apply: 
       tags: always
   tags: [reverse]
+
+- name: Revoke licenses
+  include_tasks: license.yml
+  tags: license
