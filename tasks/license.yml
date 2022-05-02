@@ -18,4 +18,3 @@
     license_key: "{{ item }}"
   loop: "{{ f5_licenses }}"
   notify: save config
-

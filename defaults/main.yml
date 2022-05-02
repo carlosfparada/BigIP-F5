@@ -1,6 +1,5 @@
 ---
 # defaults file for f5-bigip
-#f5_licenses: [ISDBA-VXBYO-DCBSI-ZDIFK-WCEOXEX]
 f5_licenses: [WCEFO-XHJDQ-KMTGG-FCGUA-QBDHNHD]
 
 f5_license: 1234-1234-1234-1234
