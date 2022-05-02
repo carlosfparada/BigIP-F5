@@ -28,8 +28,8 @@ f5_pool: www_pool1
 input_member_state: enabled
 
 f5_tower_username: admin
-f5_tower_password: changme
-f5_tower_host: https://127.0.0.1
+f5_tower_password: Rfc1918!
+f5_tower_host: https://172.16.1.34
 f5_tower_inventory: reverse
 
 pm: []
