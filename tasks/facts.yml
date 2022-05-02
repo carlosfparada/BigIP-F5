@@ -1,0 +1,16 @@
+---
+#
+# https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigip_device_info_module.html#bigip-device-info-module
+#
+
+- name: gather facts
+  f5networks.f5_modules.bigip_device_info:
+    provider: "{{ f5_provider }}"
+    gather_subset: "{{ f5_device_info_subset }}"
+  register: _f5_facts
+  tags: [always]
+
+- name: Device Info output
+  debug: 
+     msg: "{{ _f5_facts }}"
+  tags: [always]

@@ -11,16 +11,36 @@
   register: facts
   tags: facts
 
-- name: debug facts
+- name: Debug facts
   debug: 
     msg: "{{ hostvars[inventory_hostname] }}"
   tags: [never, debug, facts]
 
-- name: include licenses
+- name: Include facts
+  include_tasks: facts.yml
+  tags: facts
+
+- name: Include licenses
   include_tasks: license.yml
   tags: license
 
-- name: include load balance
+- name: Include load balance
   include_tasks: balance.yml
 
+- include_tasks: postprovision.yml
+  tags: [postprovision, prepare]
 
+- include_tasks: balance.yml 
+  tags: [balance]
+
+- include_tasks: poolmember.yml
+  tags: [poolmember]
+
+- include_tasks: pool_report.yml
+  tags: [report]
+
+- include_tasks: 
+    file: reverseengineer.yml
+    apply: 
+      tags: always
+  tags: [reverse]

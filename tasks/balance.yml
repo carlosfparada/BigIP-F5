@@ -1,17 +1,5 @@
 ---
 
-- name: Gather Facts
-  f5networks.f5_modules.bigip_device_info:
-    provider: "{{ f5_provider }}"
-    gather_subset: "{{ f5_device_info_subset }}"
-  register: _f5_facts
-  tags: [always]
-
-- name: Device Info Output
-  debug: 
-     msg: "{{ _f5_facts }}"
-  tags: [always]
-
 - name: Create F5 Nodes (OPTIONAL)
   bigip_node:
     provider: "{{ f5_provider }}"
