@@ -1,0 +1,15 @@
+---
+
+- name: BigIP F5 provisioning
+  hosts: f5-bigip-1
+  connection: local
+  gather_facts: no
+  
+  tasks:
+    - include_vars: ../defaults/main.yml
+    #- include_vars: ../vaults/f5_vault.yml
+
+    - include_tasks: ../tasks/facts.yml
+
+  handlers:
+    - import_tasks: ../handlers/main.yml
