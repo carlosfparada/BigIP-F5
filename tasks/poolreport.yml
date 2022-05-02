@@ -35,15 +35,15 @@
 
 - name: Copy static files
   copy:
-    src: "{{ item }}"
+    src: "../files/{{ item }}"
     dest: "{{ f5_web_dir }}{{item}}"
   loop:
-    - ../files/main.css
-    - ../files/red.png
-    - ../files/green.png
+    - main.css
+    - red.png
+    - green.png
   tags: [always]
 
-- name: generate pool report
+- name: Generate pool report
   template: 
     src: ../templates/poolindex.j2
     dest: "{{ f5_web_dir }}poolindex.html"
