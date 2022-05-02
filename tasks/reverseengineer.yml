@@ -15,7 +15,7 @@
 
 - name: Ansible Tower push back block
   block:
-  - name: make sure about inventory itself on Tower
+  - name: Make sure about inventory itself on Tower
     awx.awx.tower_inventory:
       tower_host: "{{ f5_tower_host }}"
       tower_username: "{{ f5_tower_username }}"

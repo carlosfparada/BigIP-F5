@@ -3,7 +3,7 @@
 
 - name: Block for Ansible Tower push back
   block:
-  - name: write inventory hosts
+  - name: Write inventory hosts
     awx.awx.tower_host:
       tower_host: "{{ f5_tower_host }}"
       tower_username: "{{ f5_tower_username }}"
@@ -20,7 +20,7 @@
     loop: "{{ pool.members }}"
     loop_control:
       loop_var: member
-      label: "{{ member.name | regex_replace(':[0-9]*') }}"
+      label: "{{ member.name | regex_replace(':0-9]*') }}"
   - name: Extract the member list 
     set_fact:
       pm: "{{ pm + [item] }}"
