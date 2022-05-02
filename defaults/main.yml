@@ -25,7 +25,7 @@ f5_pools: [www_pool1, www_pool2]
 
 input_webservers: [webserver-1]
 f5_pool: www_pool1
-input_member_state: disabled
+input_member_state: enabled
 
 f5_tower_username: admin
 f5_tower_password: changme
