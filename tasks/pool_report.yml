@@ -1,6 +1,6 @@
 ---
 
-- name: Collect data
+- name: Collect F5 data (ltm-pools)
   f5networks.f5_modules.bigip_device_info:
     provider: "{{ f5_provider }}"
     gather_subset:
@@ -35,12 +35,12 @@
 
 - name: Copy static files
   copy:
-    src: "{{ item}}"
+    src: "{{ item }}"
     dest: "{{ f5_web_dir }}{{item}}"
   loop:
-    - main.css
-    - red.png
-    - green.png
+    - ../files/main.css
+    - ../files/red.png
+    - ../files/green.png
   tags: [always]
 
 - name: generate pool report
