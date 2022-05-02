@@ -2,12 +2,13 @@
 
 - name: Set F5 admin password
   bigip_command:
-    provider:
-      user: admin
-      ssh_keyfile: "{{ f5_provider_pem_key | default(omit) }}"
-      transport: cli
-      server_port: 22
-      server: "{{ ansible_host }}"
+    provider: "{{ f5_provider }}"
+    #provider:
+    #  user: admin
+    #  ssh_keyfile: "{{ f5_provider_pem_key | default(omit) }}"
+    #  transport: cli
+    #  server_port: 22
+    #  server: "{{ ansible_host }}"
     commands: "modify auth user admin password {{ f5_provider_password }}"
     warn: no
   retries: 10
@@ -17,12 +18,13 @@
 
 - name: Save F5 sys config 
   bigip_command:
-    provider:
-      user: admin
-      ssh_keyfile: "{{ aws_pem_key }}"
-      transport: cli
-      server_port: 22
-      server: "{{ ansible_host }}"
+    provider: "{{ f5_provider }}"
+    #provider:
+    #  user: admin
+    #  ssh_keyfile: "{{ f5_provider_pem_key }}"
+    #  transport: cli
+    #  server_port: 22
+    #  server: "{{ ansible_host }}"
     commands: "save sys config"
     warn: no
   
