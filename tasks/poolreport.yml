@@ -62,6 +62,12 @@
     label: "{{ item.name }}"
   tags: [always]
 
-- name: SCP report files to Controller host
+- name: LS 
+  command: "ls -la {{ f5_web_dir }}"
+  become: yes
+  connection: local
+
+- name: SCP report files to Webserver host
   command: "scp -o StrictHostKeyChecking=no {{ f5_web_dir }} {{ report_data }}"
   become: yes
+  connection: local
