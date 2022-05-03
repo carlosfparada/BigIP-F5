@@ -62,8 +62,8 @@
     label: "{{ item.name }}"
   tags: [always]
 
-- name: LS 
-  command: "ls -la {{ f5_web_dir }}"
+- name: echo
+  command: "echo 'scp -o StrictHostKeyChecking=no {{ f5_web_dir }} {{ report_data }}'"
   become: yes
   connection: local
 
