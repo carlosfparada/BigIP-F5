@@ -63,7 +63,5 @@
   tags: [always]
 
 - name: SCP report files to Controller host
-  shell: |
-      scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{ f5_web_dir }} {{ report_data }}:/tmp/data
-      exit 0
-#  become: yes
+  command: "scp -o StrictHostKeyChecking=no {{ f5_web_dir }} {{ report_data }}"
+  become: yes
