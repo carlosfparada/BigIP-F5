@@ -32,6 +32,6 @@ f5_tower_password: Rfc1918!
 f5_tower_host: https://172.16.1.34
 f5_tower_inventory: reverse
 
-report_data: root@172.16.1.34
+report_data: root@172.16.1.34:/tmp/data
 
 pm: []
