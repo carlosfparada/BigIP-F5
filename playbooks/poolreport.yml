@@ -27,7 +27,7 @@
 
   - name: Copy to Webserver
     copy: 
-      src: "{{ f5_web_dir }}/*.html" 
+      src: "{{ f5_web_dir }}*.html" 
       dest: "{{ report_data }}"
       owner: apache
       mode: "0644"
