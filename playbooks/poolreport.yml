@@ -23,12 +23,14 @@
 #    HOST_KEY_CHECKING: False
 
   tasks:
+  - include_vars: ../defaults/main.yml
+
   - name: Copy to Webserver
     copy: 
       src: "{{ f5_web_dir }}/*.html" 
       dest: "{{ report_data }}"
     become: yes
-
+    
 #  - name: SCP report files to Webserver host
 #    command: "scp -o StrictHostKeyChecking=no {{ f5_web_dir }}/*.html {{ report_data }}"
 #    become: yes
