@@ -20,7 +20,7 @@ f5_device_info_subset:
 
 f5_reverse_dest: tower
 
-f5_web_dir: /tmp
+f5_web_dir: /tmp/data/
 f5_pools: [www_pool1, www_pool2]
 
 input_webservers: [webserver-1]
