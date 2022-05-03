@@ -29,8 +29,14 @@
     copy: 
       src: "{{ f5_web_dir }}/*.html" 
       dest: "{{ report_data }}"
+      owner: apache
+      mode: "0644"
     become: yes
-    
+    #notify: restart httpd server
+
+  handlers:
+    - import_tasks: ../handlers/main.yml
+
 #  - name: SCP report files to Webserver host
 #    command: "scp -o StrictHostKeyChecking=no {{ f5_web_dir }}/*.html {{ report_data }}"
 #    become: yes
