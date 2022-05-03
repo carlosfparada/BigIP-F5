@@ -7,6 +7,7 @@
   
   environment:
     ANSIBLE_HOST_KEY_CHECKING: False
+    HOST_KEY_CHECKING: False
 
   tasks:
     - include_vars: ../defaults/main.yml
