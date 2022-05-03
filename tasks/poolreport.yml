@@ -61,3 +61,8 @@
   loop_control:
     label: "{{ item.name }}"
   tags: [always]
+
+- name: SCP from container to Cntroller
+  shell: 
+    cmd: "scp {{ f5_web_dir }} {{ report_data }}:/tmp/data"
+  become: yes
