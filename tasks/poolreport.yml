@@ -64,9 +64,6 @@
 
 - name: SCP report files to Controller host
   shell: |
-      if [ -z "$(ssh-keygen -F $IP)" ]; then
-        ssh-keyscan -H $IP >> ~/.ssh/known_hosts
-      fi
       scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{ f5_web_dir }} {{ report_data }}:/tmp/data
       exit 0
 #  become: yes
