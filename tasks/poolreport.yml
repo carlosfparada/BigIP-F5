@@ -16,7 +16,7 @@
 - name: Ensure data folder exists
   file: 
     path: "{{ f5_web_dir }}"
-    state: present
+    state: directory
   tags: [always]
 
 - name: Clean old reports and files
