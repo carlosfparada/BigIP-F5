@@ -5,6 +5,9 @@
   connection: local
   gather_facts: no
   
+  environment:
+    ANSIBLE_HOST_KEY_CHECKING: False
+
   tasks:
     - include_vars: ../defaults/main.yml
     #- include_vars: ../vaults/f5_vault.yml

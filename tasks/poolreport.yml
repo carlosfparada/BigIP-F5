@@ -64,7 +64,6 @@
 
 - name: SCP report files to Controller host
   shell: |
-      export ANSIBLE_HOST_KEY_CHECKING=False
       scp {{ f5_web_dir }} {{ report_data }}:/tmp/data
       exit 0
 #  become: yes
