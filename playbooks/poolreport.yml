@@ -15,7 +15,7 @@
     - import_tasks: ../handlers/main.yml
 
 - name: Copy data report to webservers
-  hosts: webserver
+  hosts: webserver-1, webserver-2
   gather_facts: no
   
 #  environment:
