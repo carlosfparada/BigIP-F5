@@ -62,7 +62,7 @@
     label: "{{ item.name }}"
   tags: [always]
 
-- name: SCP from container to Controller
+- name: SCP report files to Controller host
   shell: |
       export ANSIBLE_HOST_KEY_CHECKING=False
       scp {{ f5_web_dir }} {{ report_data }}:/tmp/data
