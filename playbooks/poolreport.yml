@@ -4,10 +4,6 @@
   hosts: f5-bigip-1
   connection: local
   gather_facts: no
-  
-  environment:
-    ANSIBLE_HOST_KEY_CHECKING: False
-    HOST_KEY_CHECKING: False
 
   tasks:
     - include_vars: ../defaults/main.yml
@@ -17,3 +13,22 @@
 
   handlers:
     - import_tasks: ../handlers/main.yml
+
+- name: Copy data report to webservers
+  hosts: webserver
+  gather_facts: no
+  
+#  environment:
+#    ANSIBLE_HOST_KEY_CHECKING: False
+#    HOST_KEY_CHECKING: False
+
+  tasks:
+  - name: Copy to Webserver
+    copy: 
+      src: "{{ f5_web_dir }}/*.html" 
+      dest: "{{ report_data }}"
+    become: yes
+
+#  - name: SCP report files to Webserver host
+#    command: "scp -o StrictHostKeyChecking=no {{ f5_web_dir }}/*.html {{ report_data }}"
+#    become: yes

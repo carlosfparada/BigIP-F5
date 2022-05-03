@@ -61,13 +61,3 @@
   loop_control:
     label: "{{ item.name }}"
   tags: [always]
-
-- name: echo
-  command: "echo 'scp -o StrictHostKeyChecking=no {{ f5_web_dir }}*.html {{ report_data }}'"
-  become: yes
-  connection: local
-
-- name: SCP report files to Webserver host
-  command: "scp -o StrictHostKeyChecking=no {{ f5_web_dir }}*.html {{ report_data }}"
-  become: yes
-  connection: local
