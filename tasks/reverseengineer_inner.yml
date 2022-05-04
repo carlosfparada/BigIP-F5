@@ -4,10 +4,10 @@
 - name: Block for Ansible Tower push back
   block:
   - name: Write inventory hosts
-    awx.awx.tower_host:
-      tower_host: "{{ f5_tower_host }}"
-      tower_username: "{{ f5_tower_username }}"
-      tower_password: "{{ f5_tower_password }}"
+    awx.awx.host:
+      controller_host: "{{ f5_tower_host }}"
+      controller_username: "{{ f5_tower_username }}"
+      controller_password: "{{ f5_tower_password }}"
       validate_certs: no
       name: "{{ member.name | regex_replace(':[0-9]*') }}"
       inventory: "{{ f5_tower_inventory }}"
@@ -26,10 +26,10 @@
       pm: "{{ pm + [item] }}"
     loop: "{{ pool | json_query('members[*].name') | regex_replace(':[0-9]*') }}"
   - name: Write inventory group {{ pool.name }}
-    awx.awx.tower_group:
-      tower_host: "{{ f5_tower_host }}"
-      tower_username: "{{ f5_tower_username }}"
-      tower_password: "{{ f5_tower_password }}"
+    awx.awx.group:
+      controller_host: "{{ f5_tower_host }}"
+      controller_username: "{{ f5_tower_username }}"
+      controller_password: "{{ f5_tower_password }}"
       validate_certs: no
       name: "{{ pool.name }}"
       inventory: "{{ f5_tower_inventory }}"
