@@ -17,7 +17,7 @@
   file: 
     path: "{{ report_folder }}"
     state: directory
-  delegate_to: report_webserver
+  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Clean old reports and files
@@ -29,7 +29,7 @@
     - "{{ report_folder }}main.css"
     - "{{ report_folder }}red.png"
     - "{{ report_folder }}green.png"
-  delegate_to: report_webserver
+  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Clean old member reports
@@ -49,14 +49,14 @@
     - main.css
     - red.png
     - green.png
-  delegate_to: report_webserver
+  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Generate pool report
   template: 
     src: ../templates/poolindex.j2
     dest: "{{ report_folder }}poolindex.html"
-  delegate_to: report_webserver
+  delegate_to: "{{ report_webserver }}"
   run_once: true
   tags: [always]
 
@@ -64,7 +64,7 @@
   template: 
     src: ../templates/memberlist.j2
     dest: "{{ report_folder }}{{ item.name }}_members.html"
-  delegate_to: report_webserver
+  delegate_to: "{{ report_webserver }}"
   run_once: true
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
