@@ -31,7 +31,7 @@ f5_tower_password: Rfc1918!
 f5_tower_host: https://172.16.1.34
 f5_tower_inventory: reverse-f5
 
-report_webserver: "webserver-1"
-report_folder: /var/www/html/
+report_webserver: 'webserver-1'
+report_folder: /tmp/
 
 pm: []
