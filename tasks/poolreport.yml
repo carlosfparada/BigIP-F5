@@ -75,5 +75,5 @@
     owner: apache
     mode: "0644"
   become: yes
-  delegate_to: {{ item }}
+  delegate_to: "{{ item }}"
   loop: "{{ report_servers }}"
