@@ -15,7 +15,7 @@
 
 - name: Ensure data folder exists
   file: 
-    path: "{{ f5_web_dir }}"
+    path: "{{ report_folder }}"
     state: directory
   delegate_to: report_webserver
   tags: [always]
