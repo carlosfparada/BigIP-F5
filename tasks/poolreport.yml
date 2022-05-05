@@ -67,3 +67,13 @@
   loop_control:
     label: "{{ item.name }}"
   tags: [always]
+
+- name: Copy to Webserver
+  copy: 
+    src: "{{ f5_web_dir }}" 
+    dest: "{{ report_data }}"
+    owner: apache
+    mode: "0644"
+  become: yes
+  delegate_to: 
+  notify: restart httpd server
