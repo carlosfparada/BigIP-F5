@@ -55,8 +55,8 @@
 
 - name: Generate pool report
   template: 
-    src: ../templates/poolindex.j2
-    dest: "{{ report_folder }}poolindex.html"
+    src: ../templates/poolindex.j2bb
+    dest: "bb{{ report_folder }}poolindex.html"
   delegate_to: "{{ report_webserver }}"
   tags: [always]
 
