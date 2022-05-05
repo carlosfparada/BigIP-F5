@@ -9,7 +9,20 @@
     - include_vars: ../defaults/main.yml
     #- include_vars: ../vaults/f5_vault.yml
 
-    - include_tasks: ../tasks/poolmember.yml
+    #- include_tasks: ../tasks/poolmember.yml
+
+    - name: Copy static files
+      copy:
+        src: "../files/{{ item }}"
+        dest: "{{ report_folder }}{{item}}"
+      loop:
+        - main.css
+        - red.png
+        - green.png
+      become: true
+      delegate_to: "{{ report_webserver }}"
+      tags: [always]
+
 
   handlers:
     - import_tasks: ../handlers/main.yml

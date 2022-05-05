@@ -1,7 +1,7 @@
 ---
 # tasks file for f5-bigip
 
-- name: grab F5 facts
+- name: Grab F5 facts
   bigip_device_info:
     provider: "{{ f5_provider }}"
     gather_subset:
