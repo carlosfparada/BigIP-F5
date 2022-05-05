@@ -63,7 +63,7 @@
 - name: Generate pool member report 
   template: 
     src: ../templates/memberlist.j2
-    dest: "aa{{ report_folder }}{{ item.name }}_members.html"
+    dest: "{{ report_folder }}{{ item.name }}_members.html"
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
     label: "{{ item.name }}"
