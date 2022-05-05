@@ -20,7 +20,6 @@ f5_device_info_subset:
 
 f5_reverse_dest: tower
 
-f5_web_dir: /tmp/data/
 f5_pools: [www_pool1, www_pool2]
 
 input_webservers: [webserver-1]
@@ -32,7 +31,7 @@ f5_tower_password: Rfc1918!
 f5_tower_host: https://172.16.1.34
 f5_tower_inventory: reverse-f5
 
-report_servers: [webserver-1, webserver-2]
-report_data: /var/www/html/
+report_webserver: webserver-1
+report_folder: /var/www/html/
 
 pm: []

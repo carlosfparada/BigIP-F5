@@ -17,6 +17,7 @@
   file: 
     path: "{{ f5_web_dir }}"
     state: directory
+  delegate_to: report_webserver
   tags: [always]
 
 - name: Clean old reports and files
@@ -24,15 +25,16 @@
     path: "{{ item }}"
     state: absent
   loop:
-    - "{{ f5_web_dir }}poolindex.html"
-    - "{{ f5_web_dir }}main.css"
-    - "{{ f5_web_dir }}red.png"
-    - "{{ f5_web_dir }}green.png"
+    - "{{ report_folder }}poolindex.html"
+    - "{{ report_folder }}main.css"
+    - "{{ report_folder }}red.png"
+    - "{{ report_folder }}green.png"
+  delegate_to: report_webserver
   tags: [always]
 
 - name: Clean old member reports
   file: 
-    path: "{{ f5_web_dir }}{{ item.name }}_members.html"
+    path: "{{ report_folder }}{{ item.name }}_members.html"
     state: absent
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
@@ -42,38 +44,30 @@
 - name: Copy static files
   copy:
     src: "../files/{{ item }}"
-    dest: "{{ f5_web_dir }}{{item}}"
+    dest: "{{ report_folder }}{{item}}"
   loop:
     - main.css
     - red.png
     - green.png
+  delegate_to: report_webserver
   tags: [always]
 
 - name: Generate pool report
   template: 
     src: ../templates/poolindex.j2
-    dest: "{{ f5_web_dir }}poolindex.html"
-  delegate_to: localhost
+    dest: "{{ report_folder }}poolindex.html"
+  delegate_to: report_webserver
   run_once: true
   tags: [always]
 
 - name: Generate pool member report 
   template: 
     src: ../templates/memberlist.j2
-    dest: "{{ f5_web_dir }}{{ item.name }}_members.html"
-  delegate_to: localhost
+    dest: "{{ report_folder }}{{ item.name }}_members.html"
+  delegate_to: report_webserver
   run_once: true
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
     label: "{{ item.name }}"
   tags: [always]
 
-- name: Copy to Webservers
-  copy: 
-    src: "{{ f5_web_dir }}" 
-    dest: "{{ report_data }}"
-    owner: apache
-    mode: "0644"
-  become: yes
-  delegate_to: "{{ item }}"
-  loop: "{{ report_servers }}"

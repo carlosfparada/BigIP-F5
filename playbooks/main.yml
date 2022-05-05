@@ -14,18 +14,3 @@
   handlers:
     - import_tasks: ../handlers/main.yml
 
-
-
-- name: Copy data report to webservers
-  hosts: webserver-1, webserver-2
-  gather_facts: no
-  
-#  environment:
-#    ANSIBLE_HOST_KEY_CHECKING: False
-#    HOST_KEY_CHECKING: False
-
-  tasks:
-  - include_vars: ../defaults/main.yml
-
-  handlers:
-    - import_tasks: ../handlers/main.yml
