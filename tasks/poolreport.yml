@@ -68,12 +68,12 @@
     label: "{{ item.name }}"
   tags: [always]
 
-- name: Copy to Webserver
+- name: Copy to Webservers
   copy: 
     src: "{{ f5_web_dir }}" 
     dest: "{{ report_data }}"
     owner: apache
     mode: "0644"
   become: yes
-  delegate_to: 
-  notify: restart httpd server
+  delegate_to: {{ item }}
+  loop: "{{ report_servers }}"
