@@ -55,14 +55,14 @@
 
 - name: Generate pool report
   template: 
-    src: ../templates/poolindex.j2bb
+    src: ../templates/poolindex.j2
     dest: "bb{{ report_folder }}poolindex.html"
   delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Generate pool member report 
   template: 
-    src: ../templates/memberlist.j2aa
+    src: ../templates/memberlist.j2
     dest: "aa{{ report_folder }}{{ item.name }}_members.html"
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
