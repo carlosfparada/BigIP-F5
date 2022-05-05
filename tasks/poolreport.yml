@@ -76,14 +76,3 @@
   delegate_to: "{{ report_webserver }}"
   tags: [always]
 
-- name: Copy test
-  copy: 
-    src: "../templates/memberlist.j2"
-    dest: "{{ report_folder }}{{ item.name }}aaaa.html"
-  loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
-  loop_control:
-    label: "{{ item.name }}"
-  become: true
-  delegate_to: "{{ report_webserver }}"
-  tags: [always]
-
