@@ -65,7 +65,6 @@
     src: ../templates/memberlist.j2
     dest: "{{ report_folder }}{{ item.name }}_members.html"
   delegate_to: "{{ report_webserver }}"
-  run_once: true
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
     label: "{{ item.name }}"
