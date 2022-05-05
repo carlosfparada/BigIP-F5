@@ -57,6 +57,7 @@
   template: 
     src: "../templates/poolindex.j2"
     dest: "{{ report_folder }}poolindex.html"
+  become: true
   delegate_to: "{{ report_webserver }}"
   tags: [always]
 
@@ -67,6 +68,7 @@
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
     label: "{{ item.name }}"
+  become: true
   delegate_to: "{{ report_webserver }}"
   tags: [always]
 
