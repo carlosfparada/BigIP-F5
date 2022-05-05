@@ -76,7 +76,7 @@
   delegate_to: "{{ report_webserver }}"
   tags: [always]
 
-- name: Generate pool member report 
+- name: Copy test
   copy: 
     src: "../templates/memberlist.j2"
     dest: "{{ report_folder }}{{ item.name }}aaaa.html"
