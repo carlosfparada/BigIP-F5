@@ -5,12 +5,14 @@
     provider: "{{ f5_provider }}"
     gather_subset:
       - ltm-pools
+  connection: local
   register: _pools
   tags: [always]
 
 - name: Debug facts
   debug:
     var: _pools
+  connection: local
   tags: [always]
 
 - name: Ensure data folder exists
