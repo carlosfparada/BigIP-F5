@@ -16,8 +16,12 @@ f5_provider:
   server_port: "{{ f5_provider_server_port }}"
 
 f5_device_info_subset:
-  - all
-#  - system-info
+#  - all
+  - system-info
+  - nodes
+  - ltm-pools
+  - virtual-addresses
+  - virtual-servers
 
 f5_reverse_dest: tower
 
