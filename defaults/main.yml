@@ -16,7 +16,8 @@ f5_provider:
   server_port: "{{ f5_provider_server_port }}"
 
 f5_device_info_subset:
-  - system-info
+  - all
+#  - system-info
 
 f5_reverse_dest: tower
 
