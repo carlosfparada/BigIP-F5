@@ -19,11 +19,11 @@
   file: 
     path: "{{ report_folder }}"
     state: directory
+  vars:
+    "ansible_python_interpreter": "/usr/bin/python3"
   become: true
   delegate_to: "{{ report_webserver }}"
   tags: [always]
-  vars:
-    "ansible_python_interpreter": "/usr/bin/python3"
 
 - name: Clean old reports and files
   file: 
