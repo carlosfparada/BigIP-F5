@@ -15,15 +15,13 @@
   connection: local
   tags: [always]
 
-- name: Ensure data folder exists
-  file: 
-    path: "{{ report_folder }}"
-    state: directory
-  vars:
-    "ansible_python_interpreter": "/usr/bin/python3"
-  become: true
-  delegate_to: "{{ report_webserver }}"
-  tags: [always]
+#- name: Ensure data folder exists
+#  file: 
+#    path: "{{ report_folder }}"
+#    state: directory
+#  become: true
+#  delegate_to: "{{ report_webserver }}"
+#  tags: [always]
 
 - name: Clean old reports and files
   file: 
