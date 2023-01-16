@@ -15,6 +15,10 @@
   connection: local
   tags: [always]
 
+- name: Debug pools
+  debug:
+    var: _pools
+
 - name: Copy pools
   set_stats:
     _pools: "{{ _pools }}"
