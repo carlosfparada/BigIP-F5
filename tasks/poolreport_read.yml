@@ -21,5 +21,6 @@
 
 - name: Copy pools
   set_stats:
-    _pools: "{{ _pools }}"
+    data:
+      _pools: "{{ _pools }}"
 
