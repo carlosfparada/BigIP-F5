@@ -1,0 +1,15 @@
+---
+
+- name: BigIP F5 write
+  hosts: report_webserver
+  #connection: local
+  gather_facts: no
+
+  tasks:
+    - include_vars: ../defaults/main.yml
+    #- include_vars: ../vaults/f5_vault.yml
+
+    - include_tasks: ../tasks/poolreport_write.yml
+
+  handlers:
+    - import_tasks: ../handlers/main.yml
