@@ -1,0 +1,21 @@
+---
+
+- name: Collect F5 data (ltm-pools)
+  f5networks.f5_modules.bigip_device_info:
+    provider: "{{ f5_provider }}"
+    gather_subset:
+      - ltm-pools
+  connection: local
+  register: _pools
+  tags: [always]
+
+- name: Debug facts
+  debug:
+    var: _pools
+  connection: local
+  tags: [always]
+
+- name: Copy pools
+  set_stats:
+    _pools: "{{ _pool }}"
+

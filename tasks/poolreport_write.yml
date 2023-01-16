@@ -1,26 +1,10 @@
 ---
 
-- name: Collect F5 data (ltm-pools)
-  f5networks.f5_modules.bigip_device_info:
-    provider: "{{ f5_provider }}"
-    gather_subset:
-      - ltm-pools
-  connection: local
-  register: _pools
-  tags: [always]
-
-- name: Debug facts
-  debug:
-    var: _pools
-  connection: local
-  tags: [always]
-
 - name: Ensure data folder exists
   file: 
     path: "{{ report_folder }}"
     state: directory
   become: true
-  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Clean old reports and files
@@ -33,7 +17,6 @@
     - "{{ report_folder }}red.png"
     - "{{ report_folder }}green.png"
   become: true
-  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Clean old member reports
@@ -44,7 +27,6 @@
   loop_control:
     label: "{{ item.name }}"
   become: true
-  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Copy static files
@@ -56,7 +38,6 @@
     - red.png
     - green.png
   become: true
-  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Generate pool report
@@ -64,7 +45,6 @@
     src: "../templates/poolindex.j2"
     dest: "{{ report_folder }}poolindex.html"
   become: true
-  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
 - name: Generate pool member report 
@@ -75,6 +55,5 @@
   loop_control:
     label: "{{ item.name }}"
   become: true
-  delegate_to: "{{ report_webserver }}"
   tags: [always]
 
