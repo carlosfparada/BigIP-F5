@@ -1,73 +1,81 @@
 ---
 
-- name: collect data
+- name: Collect F5 data (ltm-pools)
   f5networks.f5_modules.bigip_device_info:
     provider: "{{ f5_provider }}"
     gather_subset:
       - ltm-pools
+  connection: local
   register: _pools
-  delegate_to: localhost
   tags: [always]
 
-- name: debug
+- name: Debug facts
   debug:
     var: _pools
-  delegate_to: localhost
+  connection: local
+  delegate_to: "{{ ansible_host }}"
   tags: [always]
+  
+- name: Ensure data folder exists
+  file: 
+    path: "{{ report_folder }}"
+    state: directory
+  become: true
+  tags: [always]
+  delegate_to: "{{ ansible_host }}"
 
-- name: clean old reports and files
+- name: Clean old reports and files
   file: 
     path: "{{ item }}"
     state: absent
   loop:
-    - "{{ f5_web_dir }}poolindex.html"
-    - "{{ f5_web_dir }}main.css"
-    - "{{ f5_web_dir }}red.png"
-    - "{{ f5_web_dir }}green.png"
-  delegate_to: "{{ f5_webserver }}"
+    - "{{ report_folder }}poolindex.html"
+    - "{{ report_folder }}main.css"
+    - "{{ report_folder }}red.png"
+    - "{{ report_folder }}green.png"
   become: true
+  delegate_to: "{{ ansible_host }}"
   tags: [always]
 
-- name: clean old member reports
+- name: Clean old member reports
   file: 
-    path: "{{ f5_web_dir }}{{ item.name }}_members.html"
+    path: "{{ report_folder }}{{ item.name }}_members.html"
     state: absent
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
     label: "{{ item.name }}"
-  delegate_to: "{{ f5_webserver }}"
   become: true
+  delegate_to: "{{ ansible_host }}"
   tags: [always]
 
-- name: copy static files
+- name: Copy static files
   copy:
-    src: "{{ item}}"
-    dest: "{{ f5_web_dir }}{{item}}"
+    src: "../files/{{ item }}"
+    dest: "{{ report_folder }}{{item}}"
   loop:
     - main.css
     - red.png
     - green.png
-  delegate_to: "{{ f5_webserver }}"
   become: true
+  delegate_to: "{{ ansible_host }}"
   tags: [always]
 
-- name: generate pool report
+- name: Generate pool report
   template: 
-    src: poolindex.j2
-    dest: "{{ f5_web_dir }}poolindex.html"
-  run_once: true
-  delegate_to: "{{ f5_webserver }}"
+    src: "../templates/poolindex.j2"
+    dest: "{{ report_folder }}poolindex.html"
   become: true
+  delegate_to: "{{ ansible_host }}"
   tags: [always]
 
-- name: generate pool member report 
+- name: Generate pool member report 
   template: 
-    src: memberlist.j2
-    dest: "{{ f5_web_dir }}{{ item.name }}_members.html"
-  run_once: true
+    src: "../templates/memberlist.j2"
+    dest: "{{ report_folder }}{{ item.name }}_members.html"
   loop: "{{ _pools.ansible_facts.ansible_net_ltm_pools }}"
   loop_control:
     label: "{{ item.name }}"
-  delegate_to: "{{ f5_webserver }}"
   become: true
+  delegate_to: "{{ ansible_host }}"
   tags: [always]
+
