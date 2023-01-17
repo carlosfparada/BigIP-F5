@@ -1,0 +1,14 @@
+---
+
+- name: BigIP F5 read
+  hosts: f5-bigip-1
+  #connection: local
+  gather_facts: no
+
+  tasks:
+    - include_vars: ../defaults/main.yml
+
+    - include_tasks: ../tasks/poolreport.yml
+
+  handlers:
+    - import_tasks: ../handlers/main.yml
