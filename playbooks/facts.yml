@@ -1,8 +1,8 @@
 ---
 
 - name: BigIP F5 provisioning
-  hosts: f5-bigip-1
-  connection: httpapi
+  hosts: localhost #f5-bigip-1
+  #connection: local
   gather_facts: no
   
   tasks:
