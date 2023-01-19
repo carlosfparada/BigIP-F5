@@ -2,9 +2,9 @@
 
 - name: BigIP F5 provisioning
   hosts: localhost #f5-bigip-1
-  #connection: local
+  connection: local
   gather_facts: no
-  
+
   tasks:
     - include_vars: ../defaults/main.yml
     #- include_vars: ../vaults/f5_vault.yml
