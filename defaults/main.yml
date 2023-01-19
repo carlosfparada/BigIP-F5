@@ -9,7 +9,7 @@ f5_provider_password: Rfc1918!
 f5_license_state: present
 
 f5_provider:
-  server: 172.16.1.201 #"{{ ansible_host }}"
+  server: "{{ ansible_host }}"
   user: admin
   validate_certs: no
   password: "{{ f5_provider_password }}"
