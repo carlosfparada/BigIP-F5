@@ -1,8 +1,8 @@
 ---
 
 - name: BigIP F5 write
-  hosts: webserver-1
-  #connection: local
+  hosts: localhost
+  connection: local
   gather_facts: no
 
   tasks:

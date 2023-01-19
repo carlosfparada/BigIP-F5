@@ -1,7 +1,7 @@
 ---
 
 - name: BigIP F5 provisioning
-  hosts: f5-bigip-1
+  hosts: localhost
   connection: local
   gather_facts: no
   
