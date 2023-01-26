@@ -1,6 +1,13 @@
 ---
 # defaults file for f5-bigip
 f5_licenses: [NGWRI-UYLNY-IFLVF-QZSRU-BXBZLKI]
+# Extra-license not used: QASQX-QKSRU-UNQYR-WMPZR-SMUIONM
+#BIG-IQ Virtual Edition (VE)	AFYAN-WMUFLL-UDP-MUSLNVX-IOGUEYD
+#BIG-IQ Centralized Management (CM)	JSLNI-MUEAPN-XUG-MNMFQVF-FANSKKL
+#BIG-IP Virtual Edition (VE)	NGWRI-UYLNY-IFLVF-QZSRU-BXBZLKI
+#BIG-IP Virtual Edition (VE)	QASQX-QKSRU-UNQYR-WMPZR-SMUIONM
+#BIG-IQ Centralized Management (CM) TPSNA-RDUVXK-CJT-JRGOLUW-GRDIJRB
+#BIG-IQ Virtual Edition (VE)	OSOXU-TJPVQC-OSV-DUJRUPI-VCYFLVG
 
 f5_license: 1234-1234-1234-1234
 f5_provider_server_port: 443
