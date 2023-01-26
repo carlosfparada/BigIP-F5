@@ -1,7 +1,11 @@
 ---
 # tasks file for f5-bigip
 
-- name: Include licenses
+- name: Revoke license
+  include_tasks: revoke_license.yml
+  tags: license
+  
+- name: Include license
   include_tasks: license.yml
   tags: license
   
@@ -45,6 +49,6 @@
       tags: always
   tags: [reverse]
 
-- name: Revoke licenses
+- name: Revoke license
   include_tasks: revoke_license.yml
   tags: license
