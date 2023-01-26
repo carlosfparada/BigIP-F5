@@ -5,25 +5,10 @@
 #  include_tasks: revoke_license.yml
 #  tags: license
   
-- name: Include license
-  include_tasks: license.yml
-  tags: license
+#- name: Include license
+#  include_tasks: license.yml
+#  tags: license
   
-#- name: Grab F5 facts
-#  bigip_device_info:
-#    provider: "{{ f5_provider }}"
-#    gather_subset:
-#      - system-info
-#      - interfaces 
-#      - vlans
-#  register: facts
-#  tags: facts
-#
-#- name: Debug facts
-#  debug: 
-#    msg: "{{ hostvars[inventory_hostname] }}"
-#  tags: [never, debug, facts]
-
 - name: Include facts
   include_tasks: facts.yml
   tags: facts
