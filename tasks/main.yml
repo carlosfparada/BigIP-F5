@@ -28,12 +28,12 @@
 - include_tasks: poolreport.yml
   tags: [report]
 
-- include_tasks: 
-    file: reverseengineer.yml
-    apply: 
-      tags: always
-  tags: [reverse]
+#- include_tasks: 
+#    file: reverseengineer.yml
+#    apply: 
+#      tags: always
+#  tags: [reverse]
 
-- name: Revoke license
-  include_tasks: revoke_license.yml
-  tags: license
+#- name: Revoke license
+#  include_tasks: revoke_license.yml
+#  tags: license
