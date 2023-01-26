@@ -1,6 +1,10 @@
 ---
 # tasks file for f5-bigip
 
+- name: Include licenses
+  include_tasks: license.yml
+  tags: license
+  
 - name: Grab F5 facts
   bigip_device_info:
     provider: "{{ f5_provider }}"
@@ -19,10 +23,6 @@
 - name: Include facts
   include_tasks: facts.yml
   tags: facts
-
-- name: Include licenses
-  include_tasks: license.yml
-  tags: license
 
 - name: Include load balance
   include_tasks: balance.yml
