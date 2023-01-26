@@ -1,9 +1,9 @@
 ---
 # tasks file for f5-bigip
 
-- name: Revoke license
-  include_tasks: revoke_license.yml
-  tags: license
+#- name: Revoke license
+#  include_tasks: revoke_license.yml
+#  tags: license
   
 - name: Include license
   include_tasks: license.yml
