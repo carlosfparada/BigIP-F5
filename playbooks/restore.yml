@@ -1,0 +1,17 @@
+---
+
+- name: BigIP F5 UCS restore
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - include_vars: ../defaults/main.yml
+
+    - name: Install (upload, install) UCS (User Configuration Set)
+      f5networks.f5_modules.bigip_ucs:
+        provider: "{{ f5_provider }}"
+        state: installed
+        ucs: /root/bigip.localhost.localdomain.ucs
+        no_license: yes
+        no_platform_check: yes

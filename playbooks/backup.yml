@@ -1,0 +1,17 @@
+---
+
+- name: BigIP F5 UCS backup
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - include_vars: ../defaults/main.yml
+
+    - name: Create backup UCS (User Configuration Set)
+      f5networks.f5_modules.bigip_ucs:
+        provider: "{{ f5_provider }}"
+        backup: yes
+        only_create_file: no
+        dest: /tmp/cs_backup.ucs
+
