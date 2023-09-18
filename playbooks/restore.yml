@@ -42,5 +42,7 @@
         provider: "{{ f5_provider }}"
         state: installed
         ucs: "/tmp/backup.ucs"
-        # no_license: yes
-        # no_platform_check: yes
+        no_license: yes
+        no_platform_check: yes
+        retries: 2
+        delay: 1
