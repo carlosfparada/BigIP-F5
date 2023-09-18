@@ -21,7 +21,7 @@
         var: backupinfo
 
 - name: Store files via scp
-  hosts: "{{ backup_server_server }}"
+  hosts: backup-server
   connection: ssh
   tasks:
     - include_vars: ../defaults/main.yml
