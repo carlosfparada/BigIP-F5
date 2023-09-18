@@ -44,5 +44,5 @@
         ucs: "/tmp/backup.ucs"
         no_license: yes
         no_platform_check: yes
-        retries: 2
+        retries: 3
         delay: 1
