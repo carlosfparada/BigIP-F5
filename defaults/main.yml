@@ -46,3 +46,6 @@ report_webserver: webserver-1
 report_folder: /var/www/html/
 
 pm: []
+
+backup_server: "backup-server"
+backup_server_folder: "/tmp/backup/"
