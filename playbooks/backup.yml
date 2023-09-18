@@ -13,7 +13,7 @@
         provider: "{{ f5_provider }}"
         backup: yes
         only_create_file: no
-        dest: /tmp/cs_backup.ucs
+        dest: /tmp/backup.ucs
       register: backupinfo
 
     - name: Debug backup content
