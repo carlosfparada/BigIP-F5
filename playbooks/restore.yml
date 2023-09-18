@@ -37,14 +37,14 @@
   tasks:
     - include_vars: ../defaults/main.yml
 
-    - name: Install (upload, install) UCS (User Configuration Set)
+    - name: Downloads (upload) UCS (User Configuration Set)
       f5networks.f5_modules.bigip_ucs:
         provider: "{{ f5_provider }}"
         # state: installed
         state: present
         ucs: "/tmp/backup.ucs"
 
-    - name: Install (upload, install) UCS (User Configuration Set)
+    - name: Install (upload + install) UCS (User Configuration Set)
       f5networks.f5_modules.bigip_ucs:
         provider: "{{ f5_provider }}"
         state: installed
