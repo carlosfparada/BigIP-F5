@@ -53,3 +53,4 @@
         force: true
         no_license: yes
         no_platform_check: yes
+      ignore_errors: true
