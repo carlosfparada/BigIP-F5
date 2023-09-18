@@ -40,9 +40,10 @@
     - name: Install (upload, install) UCS (User Configuration Set)
       f5networks.f5_modules.bigip_ucs:
         provider: "{{ f5_provider }}"
-        state: installed
+        # state: installed
+        state: present
         ucs: "/tmp/backup.ucs"
         no_license: yes
         no_platform_check: yes
-        retries: 3
-        delay: 1
+      retries: 3
+      delay: 1
