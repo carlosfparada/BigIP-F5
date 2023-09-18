@@ -44,3 +44,4 @@
         ucs: "/tmp/backup.ucs"
         no_license: yes
         no_platform_check: yes
+      delegate_to: localhost
