@@ -10,7 +10,7 @@
     ansible.builtin.find:
       paths: "{{ backup_server_folder }}"
       file_type: file
-      patterns: 'backup-f5*'
+      patterns: 'f5*'
       # hidden: true
       use_regex: false
     become: yes

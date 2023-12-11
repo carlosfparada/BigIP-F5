@@ -35,7 +35,7 @@
     - name: Copy config to backup server
       copy:
         src: "/tmp/backup.ucs"
-        dest: "{{ backup_server_folder }}backup-f5-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
+        dest: "{{ backup_server_folder }}f5-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
       become: true
 
 
