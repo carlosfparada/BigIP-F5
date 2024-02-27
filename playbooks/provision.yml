@@ -9,7 +9,7 @@
     - include_vars: ../defaults/main.yml
     #- include_vars: ../vaults/f5_vault.yml
 
-    - include_tasks: ../tasks/balance.yml
+    - include_tasks: ../tasks/provision.yml
 
   handlers:
     - import_tasks: ../handlers/main.yml
