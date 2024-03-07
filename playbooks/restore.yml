@@ -43,12 +43,13 @@
     #     state: present
     #     ucs: "/tmp/backup.ucs"
 
+    # https://github.com/F5Networks/f5-ansible/issues/1666
     - name: Install (upload + install) UCS (User Configuration Set)
       f5networks.f5_modules.bigip_ucs:
         provider: "{{ f5_provider }}"
         state: installed
         ucs: "/tmp/backup.ucs"
         #force: true
-        no_license: yes
-        no_platform_check: yes
+        # no_license: yes
+        # no_platform_check: yes
       ignore_errors: true
