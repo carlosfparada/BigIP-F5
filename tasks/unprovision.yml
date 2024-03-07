@@ -1,0 +1,33 @@
+---
+
+- name: Delete Virtual Server
+  bigip_virtual_server:
+    provider: "{{ f5_provider }}"
+    name: "vip"
+    destination: "{{ f5_provider.server }}"
+    port: "443"
+    enabled_vlans: "all"
+    all_profiles: ['http','clientssl']
+    pool: www_pool
+    snat: "Automap"
+    state: absent
+  register: vservercache
+
+- name: Delete F5 Pools
+  bigip_pool: 
+    provider: "{{ f5_provider }}"
+    name: www_pool
+    lb_method: "round-robin"
+    monitors: "/Common/http"
+    monitor_type: "and_list"
+    state: absent
+  notify: save config
+
+- name: Delete F5 Nodes (OPTIONAL)
+  bigip_node:
+    provider: "{{ f5_provider }}"
+    host: "{{ hostvars[item].ansible_host }}"
+    name: "{{ hostvars[item].inventory_hostname }}"
+    state: absent
+  loop: "{{ groups['webserver'] }}"
+  notify: save config
