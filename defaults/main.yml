@@ -1,4 +1,7 @@
 ---
+
+# https://community.f5.com/kb/technicalarticles/how-to-get-a-f5-trial-or-lab-license/279051
+
 # defaults file for f5-bigip
 f5_licenses: [BZBZB-YGHOS-XVCRO-KZDZD-HKRBLTZ]
 #f5_licenses: [QASQX-QKSRU-UNQYR-WMPZR-SMUIONM]
