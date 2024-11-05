@@ -24,6 +24,7 @@ f5_provider:
   validate_certs: no
   password: "{{ f5_provider_password }}"
   server_port: "{{ f5_provider_server_port }}"
+  no_f5_teem: false
 
 f5_device_info_subset:
 #  - all
